@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ContactModal } from "@/components/contact-modal"
-import { MapModal } from "@/components/map-modal"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { ArrowRight, MapPin, Zap, Shield, Recycle, Star, Users, TrendingUp, CheckCircle, Gift } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { useLanguage } from "@/components/language-provider"
+import { MapModal } from "@/components/map-modal"
 
 export default function HomePage() {
   const { t } = useLanguage()
@@ -37,7 +37,7 @@ export default function HomePage() {
                   trigger={
                     <Button
                       size="lg"
-                      className="bg-eco-green hover:bg-eco-dark-green text-white font-medium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group"
+                      className="bg-eco-green hover:bg-eco-dark-green text-white font-medium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group w-full sm:w-auto"
                     >
                       {t.hero.findPoint}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -76,41 +76,47 @@ export default function HomePage() {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <ScrollReveal delay={100}>
-              <Card className="border-eco-green/20 hover:border-eco-green/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-12 h-12 bg-eco-green/10 rounded-lg flex items-center justify-center mx-auto">
-                    <Zap className="h-6 w-6 text-eco-green" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{t.valueProposition.immediatePayment.title}</h3>
-                  <p className="text-muted-foreground">{t.valueProposition.immediatePayment.description}</p>
-                </CardContent>
-              </Card>
-            </ScrollReveal>
+            <MapModal
+              trigger={
+                <Card className="border-eco-green/20 hover:border-eco-green/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer">
+                  <CardContent className="p-6 text-center space-y-4">
+                    <div className="w-12 h-12 bg-eco-green/10 rounded-lg flex items-center justify-center mx-auto">
+                      <Zap className="h-6 w-6 text-eco-green" />
+                    </div>
+                    <h3 className="text-xl font-semibold">{t.valueProposition.immediatePayment.title}</h3>
+                    <p className="text-muted-foreground">{t.valueProposition.immediatePayment.description}</p>
+                  </CardContent>
+                </Card>
+              }
+            />
 
-            <ScrollReveal delay={200}>
-              <Card className="border-eco-aqua/20 hover:border-eco-aqua/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-12 h-12 bg-eco-aqua/10 rounded-lg flex items-center justify-center mx-auto">
-                    <MapPin className="h-6 w-6 text-eco-aqua" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{t.valueProposition.nearbyPoints.title}</h3>
-                  <p className="text-muted-foreground">{t.valueProposition.nearbyPoints.description}</p>
-                </CardContent>
-              </Card>
-            </ScrollReveal>
+            <MapModal
+              trigger={
+                <Card className="border-eco-aqua/20 hover:border-eco-aqua/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer">
+                  <CardContent className="p-6 text-center space-y-4">
+                    <div className="w-12 h-12 bg-eco-aqua/10 rounded-lg flex items-center justify-center mx-auto">
+                      <MapPin className="h-6 w-6 text-eco-aqua" />
+                    </div>
+                    <h3 className="text-xl font-semibold">{t.valueProposition.nearbyPoints.title}</h3>
+                    <p className="text-muted-foreground">{t.valueProposition.nearbyPoints.description}</p>
+                  </CardContent>
+                </Card>
+              }
+            />
 
-            <ScrollReveal delay={300}>
-              <Card className="border-eco-amber/20 hover:border-eco-amber/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-12 h-12 bg-eco-amber/10 rounded-lg flex items-center justify-center mx-auto">
-                    <Shield className="h-6 w-6 text-eco-amber" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{t.valueProposition.auditableProof.title}</h3>
-                  <p className="text-muted-foreground">{t.valueProposition.auditableProof.description}</p>
-                </CardContent>
-              </Card>
-            </ScrollReveal>
+            <MapModal
+              trigger={
+                <Card className="border-eco-amber/20 hover:border-eco-amber/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer">
+                  <CardContent className="p-6 text-center space-y-4">
+                    <div className="w-12 h-12 bg-eco-amber/10 rounded-lg flex items-center justify-center mx-auto">
+                      <Shield className="h-6 w-6 text-eco-amber" />
+                    </div>
+                    <h3 className="text-xl font-semibold">{t.valueProposition.auditableProof.title}</h3>
+                    <p className="text-muted-foreground">{t.valueProposition.auditableProof.description}</p>
+                  </CardContent>
+                </Card>
+              }
+            />
           </div>
         </div>
       </section>
@@ -290,17 +296,30 @@ export default function HomePage() {
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t.specialOffer.subtitle}</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-eco-green hover:bg-eco-dark-green text-white font-medium">
-                  {t.specialOffer.findLocations}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-eco-green text-eco-green hover:bg-eco-green hover:text-white bg-transparent"
-                >
-                  {t.specialOffer.partnerWithUs}
-                </Button>
+                <MapModal
+                  trigger={
+                    <Button
+                      size="lg"
+                      className="bg-eco-green hover:bg-eco-dark-green text-white font-medium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group w-full sm:w-auto"
+                    >
+                      {t.specialOffer.findLocations}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  }
+                />
+                <ContactModal
+                  title="Request Free Demo"
+                  description="Get a personalized demo of EcoMunay for your business or organization."
+                  trigger={
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-eco-green text-eco-green hover:bg-eco-green hover:text-white bg-transparent transition-all duration-200 hover:shadow-md"
+                    >
+                      {t.specialOffer.partnerWithUs}
+                    </Button>
+                  }
+                />
               </div>
             </CardContent>
           </Card>
@@ -403,7 +422,7 @@ export default function HomePage() {
               trigger={
                 <Button
                   size="lg"
-                  className="bg-eco-green hover:bg-eco-dark-green text-white font-medium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group"
+                  className="bg-eco-green hover:bg-eco-dark-green text-white font-medium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group w-full sm:w-auto"
                 >
                   {t.mainCta.findPoint}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
