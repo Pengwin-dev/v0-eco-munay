@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ContactModal } from "@/components/contact-modal"
+import { MapModal } from "@/components/map-modal"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { ArrowRight, MapPin, Zap, Shield, Recycle, Star, Users, TrendingUp, CheckCircle, Gift } from "lucide-react"
@@ -30,7 +31,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <ContactModal
+                <MapModal
                   trigger={
                     <Button
                       size="lg"
@@ -456,7 +457,7 @@ export default function HomePage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={200} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <ContactModal
+            <MapModal
               trigger={
                 <Button
                   size="lg"
