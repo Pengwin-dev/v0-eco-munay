@@ -3,13 +3,16 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageToggle } from "@/components/language-toggle"
 import { WalletConnectButton } from "@/components/wallet-connect-button"
+import { useLanguage } from "@/components/language-provider"
 import { Recycle, Menu } from "lucide-react"
 import { useState } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useLanguage()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -21,28 +24,29 @@ export function Header() {
 
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           <Link href="#how-it-works" className="text-foreground/80 hover:text-eco-green transition-colors">
-            How it works
+            {t.navigation.howItWorks}
           </Link>
           <Link href="#nearby-points" className="text-foreground/80 hover:text-eco-green transition-colors">
-            Nearby points
+            {t.navigation.nearbyPoints}
           </Link>
           <Link href="#benefits" className="text-foreground/80 hover:text-eco-green transition-colors">
-            Benefits
+            {t.navigation.benefits}
           </Link>
           <Link href="#help" className="text-foreground/80 hover:text-eco-green transition-colors">
-            Help
+            {t.navigation.help}
           </Link>
         </nav>
 
         <div className="flex items-center space-x-2">
-          <div className="hidden sm:block">
+          <div className="hidden sm:flex items-center space-x-2">
+            <LanguageToggle />
             <ThemeToggle />
           </div>
           <div className="hidden md:block">
             <WalletConnectButton />
           </div>
           <Button className="hidden md:block bg-eco-green hover:bg-eco-dark-green text-white font-medium">
-            Find a point
+            {t.navigation.findPoint}
           </Button>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -64,37 +68,38 @@ export function Header() {
                     className="text-foreground/80 hover:text-eco-green transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    How it works
+                    {t.navigation.howItWorks}
                   </Link>
                   <Link
                     href="#nearby-points"
                     className="text-foreground/80 hover:text-eco-green transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Nearby points
+                    {t.navigation.nearbyPoints}
                   </Link>
                   <Link
                     href="#benefits"
                     className="text-foreground/80 hover:text-eco-green transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Benefits
+                    {t.navigation.benefits}
                   </Link>
                   <Link
                     href="#help"
                     className="text-foreground/80 hover:text-eco-green transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    Help
+                    {t.navigation.help}
                   </Link>
                 </nav>
 
                 <div className="space-y-4">
                   <WalletConnectButton />
                   <Button className="w-full bg-eco-green hover:bg-eco-dark-green text-white font-medium">
-                    Find a point
+                    {t.navigation.findPoint}
                   </Button>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center space-x-2">
+                    <LanguageToggle />
                     <ThemeToggle />
                   </div>
                 </div>

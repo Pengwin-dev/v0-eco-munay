@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { WagmiProvider } from "@/components/wagmi-provider"
+import { LanguageProvider } from "@/components/language-provider"
 import { Suspense } from "react"
 import "./globals.css"
 
@@ -36,7 +37,9 @@ export default function RootLayout({
       <body className={`font-sans ${plusJakartaSans.variable} ${inter.variable} antialiased`}>
         <Suspense>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <WagmiProvider>{children}</WagmiProvider>
+            <WagmiProvider>
+              <LanguageProvider>{children}</LanguageProvider>
+            </WagmiProvider>
           </ThemeProvider>
         </Suspense>
         <Analytics />
