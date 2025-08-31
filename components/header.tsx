@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageToggle } from "@/components/language-toggle"
 import { WalletConnectButton } from "@/components/wallet-connect-button"
+import { MunayTokenCounter } from "@/components/munay-token-counter"
 import { useLanguage } from "@/components/language-provider"
-import { Recycle, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 import { useState } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
@@ -17,27 +18,19 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
-        <div className="flex items-center space-x-2">
-          <Recycle className="h-8 w-8 text-eco-green" />
-          <span className="text-xl font-bold text-eco-green">EcoMunay</span>
-        </div>
-
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link href="#how-it-works" className="text-foreground/80 hover:text-eco-green transition-colors">
-            {t.navigation.howItWorks}
-          </Link>
-          <Link href="#nearby-points" className="text-foreground/80 hover:text-eco-green transition-colors">
-            {t.navigation.nearbyPoints}
-          </Link>
-          <Link href="#benefits" className="text-foreground/80 hover:text-eco-green transition-colors">
-            {t.navigation.benefits}
-          </Link>
           <Link href="#help" className="text-foreground/80 hover:text-eco-green transition-colors">
             {t.navigation.help}
+          </Link>
+          <Link href="/whitepaper" className="text-foreground/80 hover:text-eco-green transition-colors">
+            {t.footer.whitepaper}
           </Link>
         </nav>
 
         <div className="flex items-center space-x-2">
+          <div className="hidden sm:block">
+            <MunayTokenCounter />
+          </div>
           <div className="hidden sm:flex items-center space-x-2">
             <LanguageToggle />
             <ThemeToggle />
@@ -57,39 +50,24 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-6 mt-6">
-                <div className="flex items-center space-x-2">
-                  <Recycle className="h-6 w-6 text-eco-green" />
-                  <span className="text-lg font-bold text-eco-green">EcoMunay</span>
+                <div className="flex justify-center">
+                  <MunayTokenCounter />
                 </div>
 
                 <nav className="flex flex-col space-y-4">
-                  <Link
-                    href="#how-it-works"
-                    className="text-foreground/80 hover:text-eco-green transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {t.navigation.howItWorks}
-                  </Link>
-                  <Link
-                    href="#nearby-points"
-                    className="text-foreground/80 hover:text-eco-green transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {t.navigation.nearbyPoints}
-                  </Link>
-                  <Link
-                    href="#benefits"
-                    className="text-foreground/80 hover:text-eco-green transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {t.navigation.benefits}
-                  </Link>
                   <Link
                     href="#help"
                     className="text-foreground/80 hover:text-eco-green transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {t.navigation.help}
+                  </Link>
+                  <Link
+                    href="/whitepaper"
+                    className="text-foreground/80 hover:text-eco-green transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {t.footer.whitepaper}
                   </Link>
                 </nav>
 

@@ -7,11 +7,24 @@ import { Badge } from "@/components/ui/badge"
 import { ContactModal } from "@/components/contact-modal"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import { ArrowRight, MapPin, Zap, Shield, Recycle, Star, Users, TrendingUp, CheckCircle, Gift } from "lucide-react"
+import {
+  ArrowRight,
+  Zap,
+  Shield,
+  Recycle,
+  Star,
+  Users,
+  TrendingUp,
+  CheckCircle,
+  Gift,
+  Heart,
+  HandHeart,
+  Globe,
+} from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { useLanguage } from "@/components/language-provider"
 import { MapModal } from "@/components/map-modal"
-import { WalletGate } from "@/components/wallet-gate" // Added wallet gate import
+import { WalletGate } from "@/components/wallet-gate"
 
 export default function HomePage() {
   const { t } = useLanguage()
@@ -27,11 +40,25 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <ScrollReveal className="space-y-8">
                 <div className="space-y-4">
+                  <Badge className="bg-eco-green/10 text-eco-green border-eco-green/20 mb-4">
+                    {t.hero.communityBadge}
+                  </Badge>
                   <h1 className="text-4xl md:text-6xl font-bold text-balance leading-tight">
-                    <span className="text-eco-green">{t.hero.title.split(" and ")[0]}</span> and{" "}
-                    <span className="text-eco-aqua">{t.hero.title.split(" and ")[1]}</span>
+                    <span className="text-eco-green">{t.hero.title.split(" ")[0]}</span>{" "}
+                    <span className="text-eco-aqua">{t.hero.title.split(" ")[1]}</span>{" "}
+                    {t.hero.title.split(" ").slice(2).join(" ")}
                   </h1>
                   <p className="text-xl text-muted-foreground text-pretty leading-relaxed">{t.hero.subtitle}</p>
+                  <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+                    <div className="flex items-center space-x-2">
+                      <Users className="h-4 w-4 text-eco-green" />
+                      <span>{t.hero.communitySize}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Heart className="h-4 w-4 text-eco-aqua" />
+                      <span>{t.hero.impactMade}</span>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -41,7 +68,7 @@ export default function HomePage() {
                         size="lg"
                         className="bg-eco-green hover:bg-eco-dark-green text-white font-medium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group w-full sm:w-auto"
                       >
-                        {t.hero.findPoint}
+                        {t.hero.joinCommunity}
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Button>
                     }
@@ -51,17 +78,17 @@ export default function HomePage() {
                     variant="outline"
                     className="border-eco-green text-eco-green hover:bg-eco-green hover:text-white bg-transparent transition-all duration-200 hover:shadow-md"
                   >
-                    {t.hero.howItWorks}
+                    {t.hero.seeStories}
                   </Button>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={200} className="relative">
-                <div className="aspect-square bg-gradient-to-br from-eco-green/10 to-eco-aqua/10 rounded-2xl flex items-center justify-center">
+                <div className="aspect-square bg-gradient-to-br from-eco-green/10 to-eco-aqua/10 rounded-2xl overflow-hidden">
                   <img
-                    src="/person-using-recycling-machine-with-digital-vouche.png"
-                    alt="Person using RVM with digital voucher"
-                    className="rounded-lg shadow-lg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/istockphoto-1341903801-2048x2048.jpg-HCc0A0RekVgniCFjm4UB6mgzXAifep.jpeg"
+                    alt="Community member recycling bottles"
+                    className="w-full h-full object-cover rounded-2xl"
                   />
                 </div>
               </ScrollReveal>
@@ -69,8 +96,76 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Value Proposition */}
+        {/* Community Stories Section */}
         <section className="py-16 px-4 bg-muted/30">
+          <div className="container max-w-6xl mx-auto">
+            <ScrollReveal className="text-center space-y-4 mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-balance">{t.communityStories.title}</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+                {t.communityStories.subtitle}
+              </p>
+            </ScrollReveal>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="overflow-hidden">
+                <div className="aspect-video">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-krizjohn-rosales-251185-761297.jpg-K7Y35Nz0jRU0syNXjVZAHQLiYuAJXt.jpeg"
+                    alt="Community sorting bottle caps"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <HandHeart className="h-5 w-5 text-eco-green" />
+                    <span className="font-semibold text-eco-green">{t.communityStories.story1.badge}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold">{t.communityStories.story1.title}</h3>
+                  <p className="text-muted-foreground">{t.communityStories.story1.description}</p>
+                </CardContent>
+              </Card>
+
+              <Card className="overflow-hidden">
+                <div className="aspect-video">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/riski-andriansyah-AROv5Q_6sMM-unsplash.jpg-mQE2Y5i8nz6Qjep6O89WWQzWexF2oV.jpeg"
+                    alt="Recycling worker making a difference"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <Users className="h-5 w-5 text-eco-aqua" />
+                    <span className="font-semibold text-eco-aqua">{t.communityStories.story2.badge}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold">{t.communityStories.story2.title}</h3>
+                  <p className="text-muted-foreground">{t.communityStories.story2.description}</p>
+                </CardContent>
+              </Card>
+
+              <Card className="overflow-hidden">
+                <div className="aspect-video">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/binh-le-7CUQ3bhZlNI-unsplash.jpg-xy4f5nUurl2oFtet8ztv17otY4imwy.jpeg"
+                    alt="Street vendor collecting bottles"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <Globe className="h-5 w-5 text-eco-amber" />
+                    <span className="font-semibold text-eco-amber">{t.communityStories.story3.badge}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold">{t.communityStories.story3.title}</h3>
+                  <p className="text-muted-foreground">{t.communityStories.story3.description}</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Value Proposition */}
+        <section className="py-16 px-4">
           <div className="container max-w-6xl mx-auto">
             <ScrollReveal className="text-center space-y-4 mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-balance">{t.valueProposition.title}</h2>
@@ -87,8 +182,8 @@ export default function HomePage() {
                       <div className="w-12 h-12 bg-eco-green/10 rounded-lg flex items-center justify-center mx-auto">
                         <Zap className="h-6 w-6 text-eco-green" />
                       </div>
-                      <h3 className="text-xl font-semibold">{t.valueProposition.immediatePayment.title}</h3>
-                      <p className="text-muted-foreground">{t.valueProposition.immediatePayment.description}</p>
+                      <h3 className="text-xl font-semibold">{t.valueProposition.immediateReward.title}</h3>
+                      <p className="text-muted-foreground">{t.valueProposition.immediateReward.description}</p>
                     </CardContent>
                   </Card>
                 }
@@ -99,10 +194,10 @@ export default function HomePage() {
                   <Card className="border-eco-aqua/20 hover:border-eco-aqua/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer">
                     <CardContent className="p-6 text-center space-y-4">
                       <div className="w-12 h-12 bg-eco-aqua/10 rounded-lg flex items-center justify-center mx-auto">
-                        <MapPin className="h-6 w-6 text-eco-aqua" />
+                        <Users className="h-6 w-6 text-eco-aqua" />
                       </div>
-                      <h3 className="text-xl font-semibold">{t.valueProposition.nearbyPoints.title}</h3>
-                      <p className="text-muted-foreground">{t.valueProposition.nearbyPoints.description}</p>
+                      <h3 className="text-xl font-semibold">{t.valueProposition.communityImpact.title}</h3>
+                      <p className="text-muted-foreground">{t.valueProposition.communityImpact.description}</p>
                     </CardContent>
                   </Card>
                 }
@@ -113,10 +208,10 @@ export default function HomePage() {
                   <Card className="border-eco-amber/20 hover:border-eco-amber/40 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer">
                     <CardContent className="p-6 text-center space-y-4">
                       <div className="w-12 h-12 bg-eco-amber/10 rounded-lg flex items-center justify-center mx-auto">
-                        <Shield className="h-6 w-6 text-eco-amber" />
+                        <Heart className="h-6 w-6 text-eco-amber" />
                       </div>
-                      <h3 className="text-xl font-semibold">{t.valueProposition.auditableProof.title}</h3>
-                      <p className="text-muted-foreground">{t.valueProposition.auditableProof.description}</p>
+                      <h3 className="text-xl font-semibold">{t.valueProposition.socialProof.title}</h3>
+                      <p className="text-muted-foreground">{t.valueProposition.socialProof.description}</p>
                     </CardContent>
                   </Card>
                 }
@@ -126,7 +221,7 @@ export default function HomePage() {
         </section>
 
         {/* How It Works */}
-        <section id="how-it-works" className="py-16 px-4">
+        <section id="how-it-works" className="py-16 px-4 bg-muted/30">
           <div className="container max-w-4xl mx-auto">
             <ScrollReveal className="text-center space-y-4 mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-balance">{t.howItWorks.title}</h2>
@@ -162,7 +257,7 @@ export default function HomePage() {
         </section>
 
         {/* Problem & Solution */}
-        <section className="py-16 px-4 bg-muted/30">
+        <section className="py-16 px-4">
           <div className="container max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               <ScrollReveal className="space-y-6">
@@ -428,21 +523,21 @@ export default function HomePage() {
                     size="lg"
                     className="bg-eco-green hover:bg-eco-dark-green text-white font-medium transition-all duration-200 hover:shadow-lg hover:scale-[1.02] group w-full sm:w-auto"
                   >
-                    {t.mainCta.findPoint}
+                    {t.mainCta.joinMovement}
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 }
               />
               <ContactModal
-                title="Request Free Demo"
-                description="Get a personalized demo of EcoMunay for your business or organization."
+                title="Connect With Our Community"
+                description="Join thousands of eco-warriors making a real difference in their communities."
                 trigger={
                   <Button
                     size="lg"
                     variant="outline"
                     className="border-eco-green text-eco-green hover:bg-eco-green hover:text-white bg-transparent transition-all duration-200 hover:shadow-md"
                   >
-                    {t.mainCta.getDemo}
+                    {t.mainCta.shareStory}
                   </Button>
                 }
               />
@@ -469,6 +564,9 @@ export default function HomePage() {
                 </a>
                 <a href="/contact" className="hover:text-eco-green transition-colors">
                   {t.footer.contact}
+                </a>
+                <a href="/whitepaper" className="hover:text-eco-green transition-colors">
+                  {t.footer.whitepaper}
                 </a>
               </div>
             </div>
