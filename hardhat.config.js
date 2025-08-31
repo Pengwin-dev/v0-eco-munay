@@ -1,58 +1,23 @@
-require("@nomicfoundation/hardhat-toolbox")
-require("@nomicfoundation/hardhat-verify")
-require("dotenv").config()
+// We are being explicit and importing everything we need at the top.
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import "dotenv/config"; // This loads the .env file
 
-/** @type import('hardhat/config').HardhatUserConfig */
-module.exports = {
-  solidity: {
-    version: "0.8.24",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
-      },
-    },
-  },
+const config: HardhatUserConfig = {
+  solidity: "0.8.24",
   networks: {
-    hardhat: {
-      chainId: 1337,
-    },
-    base: {
-      url: "https://mainnet.base.org",
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      chainId: 8453,
-    },
-    "base-sepolia": {
-      url: "https://sepolia.base.org",
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      chainId: 84532,
-    },
+    // You'll add your network configs here, e.g., 'base'
+    // base: {
+    //   url: process.env.BASE_RPC_URL || "",
+    //   accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+    // },
   },
   etherscan: {
+    // Your API key from etherscan.io
     apiKey: {
-      base: process.env.BASESCAN_API_KEY || "",
-      "base-sepolia": process.env.BASESCAN_API_KEY || "",
-    },
-    customChains: [
-      {
-        network: "base",
-        chainId: 8453,
-        urls: {
-          apiURL: "https://api.basescan.org/api",
-          browserURL: "https://basescan.org",
-        },
-      },
-      {
-        network: "base-sepolia",
-        chainId: 84532,
-        urls: {
-          apiURL: "https://api-sepolia.basescan.org/api",
-          browserURL: "https://sepolia.basescan.org",
-        },
-      },
-    ],
+      base: process.env.BASESCAN_API_KEY || ""
+    }
   },
-  sourcify: {
-    enabled: true,
-  },
-}
+};
+
+export default config;
