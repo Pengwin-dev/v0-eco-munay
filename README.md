@@ -12,7 +12,7 @@ EcoMunay is a web3 mini-app built on the **Base** network that tackles the chall
 
 ## 🚀 Live Demo & Project Links
 
-- **Live App:** **[v0-eco-munay-web-app.vercel.app](https://v0-eco-munay-web-app.vercel.app/)**
+- **Live App:** **[link](https://ecomunay.vercel.app/)**
 - **v0 Project Link:** **[Continue building on v0.app](https://v0.app/chat/projects/wPkC1kwkG9J)**
 
 ---
