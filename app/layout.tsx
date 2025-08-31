@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { WagmiProvider } from "@/components/wagmi-provider"
 import { LanguageProvider } from "@/components/language-provider"
 import { Suspense } from "react"
+import "@/lib/polyfills" // Import polyfills to fix WalletConnect browser compatibility issues
 import "./globals.css"
 
 const plusJakartaSans = Plus_Jakarta_Sans({

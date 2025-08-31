@@ -8,7 +8,16 @@ export const config = createConfig({
   chains: [base, baseSepolia],
   connectors: [
     injected(),
-    walletConnect({ projectId }),
+    walletConnect({
+      projectId,
+      metadata: {
+        name: "EcoMunay",
+        description: "Recycle bottles and earn instantly with blockchain rewards",
+        url: typeof window !== "undefined" ? window.location.origin : "https://ecomunay.com",
+        icons: ["https://ecomunay.com/logo.png"],
+      },
+      showQrModal: true,
+    }),
     coinbaseWallet({
       appName: "EcoMunay",
       appLogoUrl: "https://ecomunay.com/logo.png",
@@ -18,6 +27,7 @@ export const config = createConfig({
     [base.id]: http(),
     [baseSepolia.id]: http(),
   },
+  ssr: true,
 })
 
 export const CONTRACT_ADDRESSES = {

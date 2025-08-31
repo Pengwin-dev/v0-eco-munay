@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { ContactModal } from "@/components/contact-modal"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { ScrollReveal } from "@/components/scroll-reveal"
+import { DynamicLogo } from "@/components/dynamic-logo"
 import {
   ArrowRight,
   Zap,
@@ -37,6 +38,10 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative py-20 px-4">
           <div className="container max-w-6xl mx-auto">
+            <ScrollReveal className="flex justify-center mb-12">
+              <DynamicLogo size="lg" className="animate-in fade-in duration-1000" />
+            </ScrollReveal>
+
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <ScrollReveal className="space-y-8">
                 <div className="space-y-4">
