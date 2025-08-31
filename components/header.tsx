@@ -18,19 +18,20 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link href="#help" className="text-foreground/80 hover:text-eco-green transition-colors">
-            {t.navigation.help}
-          </Link>
-          <Link href="/whitepaper" className="text-foreground/80 hover:text-eco-green transition-colors">
-            {t.footer.whitepaper}
-          </Link>
-        </nav>
+        <div className="flex-1">
+          <MunayTokenCounter />
+        </div>
 
         <div className="flex items-center space-x-2">
-          <div className="hidden sm:block">
-            <MunayTokenCounter />
-          </div>
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <Link href="#help" className="text-foreground/80 hover:text-eco-green transition-colors">
+              {t.navigation.help}
+            </Link>
+            <Link href="/whitepaper" className="text-foreground/80 hover:text-eco-green transition-colors">
+              {t.footer.whitepaper}
+            </Link>
+          </nav>
+
           <div className="hidden sm:flex items-center space-x-2">
             <LanguageToggle />
             <ThemeToggle />
@@ -50,10 +51,6 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-6 mt-6">
-                <div className="flex justify-center">
-                  <MunayTokenCounter />
-                </div>
-
                 <nav className="flex flex-col space-y-4">
                   <Link
                     href="#help"
